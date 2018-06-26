@@ -17,7 +17,7 @@ SELECT e.EMPNO
 
 -- 실습3) 
 SELECT e.EMPNO
-     , e.EMPNO
+     , e.ENAME
      , e.COMM
   FROM emp e
  ORDER BY e.COMM
@@ -25,17 +25,17 @@ SELECT e.EMPNO
 
 -- 실습4) 
 SELECT e.EMPNO
-     , e.EMPNO
+     , e.ENAME
      , e.COMM
   FROM emp e
  ORDER BY e.COMM DESC
 ;
 
 -- 실습5
-SELECT e.EMPNO       사번
-     , e.ENAME       이름
-     , e.SAL         급여
-     , e.HIREDATE    입사일
+SELECT e.EMPNO      사번
+     , e.ENAME      이름
+     , e.SAL        급여
+     , e.HIREDATE   입사일
   FROM emp e
 ;  
 
