@@ -665,14 +665,3 @@ SELECT e.EMPNO
   FROM emp e
  WHERE e.ENAME LIKE 'J\%%' ESCAPE '\'
 ;
-
-
-
-
-
-
-
-
-
-
-
