@@ -723,12 +723,12 @@ SELECT a.EMPNO
      , a.ENAME
      , a.workingyear
      , DECODE(a.workingyear
-              , 37, '장기 근속자 입니다.'
-              , 38, '장기 근속자 입니다.' 
-              , '장기 근속자가 아닙니다.') as "장기 근속 여부"
+              ,37, '장기 근속자 입니다.'
+              ,38, '장기 근속자 입니다.' 
+              ,'장기 근속자가 아닙니다.') as "장기 근속 여부"
   FROM (SELECT e.EMPNO
-           , e.ENAME
-           , TO_CHAR(sysdate, 'YYYY') - TO_CHAR(e.HIREDATE, 'YYYY') "workingyear"
+             , e.ENAME
+             , TO_CHAR(sysdate, 'YYYY') - TO_CHAR(e.HIREDATE, 'YYYY') workingyear
         FROM emp e) a
 ;
 
