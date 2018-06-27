@@ -1,4 +1,4 @@
--- Ω«Ω¿1)
+-- Ïã§Ïäµ1)
 SELECT e.EMPNO
      , e.ENAME
      , e.JOB
@@ -22,7 +22,7 @@ SELECT e.EMPNO
 7369	SMITH	CLERK	800
 */
 
--- Ω«Ω¿2)
+-- Ïã§Ïäµ2)
 SELECT e.EMPNO
      , e.ENAME
      , e.HIREDATE
@@ -45,7 +45,7 @@ SELECT e.EMPNO
 7934	MILLER	82/01/23
 */
 
--- Ω«Ω¿3) 
+-- Ïã§Ïäµ3) 
 SELECT e.EMPNO
      , e.ENAME
      , e.COMM
@@ -67,7 +67,7 @@ SELECT e.EMPNO
 7369	SMITH	
 7698	BLAKE	
 */
--- Ω«Ω¿4) 
+-- Ïã§Ïäµ4) 
 SELECT e.EMPNO
      , e.ENAME
      , e.COMM
@@ -75,11 +75,11 @@ SELECT e.EMPNO
  ORDER BY e.COMM DESC
 ;
 
--- Ω«Ω¿5
-SELECT e.EMPNO      ªÁπ¯
-     , e.ENAME      ¿Ã∏ß
-     , e.SAL        ±ﬁø©
-     , e.HIREDATE   ¿‘ªÁ¿œ
+-- Ïã§Ïäµ5
+SELECT e.EMPNO      ÏÇ¨Î≤à
+     , e.ENAME      Ïù¥Î¶Ñ
+     , e.SAL        Í∏âÏó¨
+     , e.HIREDATE   ÏûÖÏÇ¨Ïùº
   FROM emp e
 ;  
 
@@ -98,7 +98,7 @@ SELECT e.EMPNO      ªÁπ¯
 7934	MILLER	1300	82/01/23
 */
 
--- Ω«Ω¿6) 
+-- Ïã§Ïäµ6) 
 SELECT *
   FROM emp e
 ;
@@ -129,7 +129,7 @@ SELECT e.EMPNO
 7934	MILLER	CLERK	    7782	82/01/23	1300	    	10
 */
 
--- Ω«Ω¿7) 
+-- Ïã§Ïäµ7) 
 SELECT e.EMPNO
      , e.ENAME
      , e.JOB
@@ -146,7 +146,7 @@ SELECT e.EMPNO
 7499	ALLEN	SALESMAN	7698	81/02/20	1600	300	30
 */
 
--- Ω«Ω¿8)
+-- Ïã§Ïäµ8)
 SELECT e.EMPNO
      , e.ENAME
      , e.DEPTNO
@@ -160,7 +160,7 @@ SELECT e.EMPNO
 7902	FORD	20
 */
 
--- Ω«Ω¿9)
+-- Ïã§Ïäµ9)
 SELECT e.EMPNO
      , e.ENAME
      , e.SAL
@@ -175,10 +175,10 @@ SELECT e.EMPNO
 7566	JONES	2975	20
 */
 
--- Ω«Ω¿10)
-SELECT e.EMPNO ªÁπ¯
-     , e.ENAME ¿Ã∏ß
-     , e.SAL + e.COMM  "±ﬁø© + ƒøπÃº«"
+-- Ïã§Ïäµ10)
+SELECT e.EMPNO ÏÇ¨Î≤à
+     , e.ENAME Ïù¥Î¶Ñ
+     , e.SAL + e.COMM  "Í∏âÏó¨ + Ïª§ÎØ∏ÏÖò"
   FROM emp e
 ;
 
@@ -197,10 +197,10 @@ SELECT e.EMPNO ªÁπ¯
 7934	MILLER	
 */
 
--- Ω«Ω¿11)
-SELECT e.EMPNO    ªÁπ¯
-     , e.ENAME    ¿Ã∏ß
-     , e.SAL * 12 ≥‚±ﬁø©
+-- Ïã§Ïäµ11)
+SELECT e.EMPNO    ÏÇ¨Î≤à
+     , e.ENAME    Ïù¥Î¶Ñ
+     , e.SAL * 12 ÎÖÑÍ∏âÏó¨
   FROM emp e
 ;
 
@@ -219,12 +219,12 @@ SELECT e.EMPNO    ªÁπ¯
 7934	MILLER	15600
 */
 
--- Ω«Ω¿12)
-SELECT e.EMPNO ªÁπ¯
-     , e.ENAME ¿Ã∏ß
-     , e.JOB   ¡˜√•
-     , e.SAL   ±ﬁø©
-     , e.COMM  ƒøπÃº«
+-- Ïã§Ïäµ12)
+SELECT e.EMPNO ÏÇ¨Î≤à
+     , e.ENAME Ïù¥Î¶Ñ
+     , e.JOB   ÏßÅÏ±Ö
+     , e.SAL   Í∏âÏó¨
+     , e.COMM  Ïª§ÎØ∏ÏÖò
   FROM emp e
  WHERE e.ENAME = 'MARTIN' 
     OR e.ENAME = 'BLAKE'
@@ -234,11 +234,11 @@ SELECT e.EMPNO ªÁπ¯
 7654	MARTIN	SALESMAN	1250	1400
 7698	BLAKE	MANAGER	    2850	
 */
--- Ω«Ω¿13) 
-SELECT e.EMPNO ªÁπ¯
-     , e.ENAME ¿Ã∏ß
-     , e.JOB   ¡˜√•
-     , e.SAL + e.COMM "±ﬁø© + ƒøπÃº«"
+-- Ïã§Ïäµ13) 
+SELECT e.EMPNO ÏÇ¨Î≤à
+     , e.ENAME Ïù¥Î¶Ñ
+     , e.JOB   ÏßÅÏ±Ö
+     , e.SAL + e.COMM "Í∏âÏó¨ + Ïª§ÎØ∏ÏÖò"
   FROM emp e
  WHERE e.ENAME = 'MARTIN'
     OR e.ENAME = 'BLAKE'
@@ -249,7 +249,7 @@ SELECT e.EMPNO ªÁπ¯
 7698	BLAKE	MANAGER	
 */
 
--- Ω«Ω¿14)
+-- Ïã§Ïäµ14)
 SELECT e.EMPNO
      , e.ENAME
      , e.JOB
@@ -304,7 +304,7 @@ SELECT e.EMPNO
 7654	MARTIN	SALESMAN	7698	81/09/28	1250	1400	30
 */
 
--- Ω«Ω¿15)
+-- Ïã§Ïäµ15)
 SELECT e.EMPNO
      , e.ENAME
      , e.JOB
@@ -316,9 +316,9 @@ SELECT e.EMPNO
   FROM emp e
  WHERE e.COMM != (null)
 ;
-¿Œ√‚µ» ∏µÁ «‡ : 0
+Ïù∏Ï∂úÎêú Î™®Îì† Ìñâ : 0
 
--- Ω«Ω¿16)
+-- Ïã§Ïäµ16)
 SELECT *
   FROM emp e
  WHERE e.DEPTNO = 20
@@ -330,7 +330,7 @@ SELECT *
 7902	FORD	ANALYST	7566	81/12/03	3000		20
 */
 
--- Ω«Ω¿17)
+-- Ïã§Ïäµ17)
 SELECT *
   FROM emp e
  WHERE e.JOB = 'MANAGER'
@@ -345,7 +345,7 @@ SELECT *
 7934	MILLER	CLERK	7782	82/01/23	1300		10
 */
 
--- Ω«Ω¿18)
+-- Ïã§Ïäµ18)
 SELECT *
   FROM emp e
  WHERE e.JOB IN ('MANAGER','CLERK','SALESMAN')
@@ -364,7 +364,7 @@ SELECT *
 7934	MILLER	CLERK	    7782	82/01/23	1300	    	10
 */
 
--- Ω«Ω¿19)
+-- Ïã§Ïäµ19)
 SELECT *
   FROM emp e
  WHERE e.ENAME LIKE 'A%'
@@ -373,7 +373,7 @@ SELECT *
 7499	ALLEN	SALESMAN	7698	81/02/20	1600	300	30
 */
 
--- Ω«Ω¿20)
+-- Ïã§Ïäµ20)
 SELECT *
   FROM emp e
  WHERE e.ENAME LIKE '%A%'
@@ -388,7 +388,7 @@ SELECT *
 7900	JAMES	CLERK	    7698	81/12/03	950		        30
 */
 
--- Ω«Ω¿21)
+-- Ïã§Ïäµ21)
 SELECT *
   FROM emp e
  WHERE e.ENAME LIKE '%S'
@@ -398,7 +398,7 @@ SELECT *
 7566	JONES	MANAGER	7839	81/04/02	2975		20
 7900	JAMES	CLERK	7698	81/12/03	950		    30
 */
--- Ω«Ω¿22)
+-- Ïã§Ïäµ22)
 SELECT *
   FROM emp e
  WHERE e.ENAME LIKE '%E_'
