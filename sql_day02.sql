@@ -1,19 +1,19 @@
 -- sql day 02
 ------------------------------------------------------------------------------------------------
--- IS NULL, IS NOT NULL ¿¬»êÀÚ
+-- IS NULL, IS NOT NULL ì—°ì‚°ìž
 /*
 
-IS NULL : ºñ±³ÇÏ·Á´Â ÄÃ·³ÀÇ °ªÀÌ NULL ÀÌ¸é true, NULL ÀÌ ¾Æ´Ï¸é false
-IS NOT NULL : ºñ±³ÇÏ·Á´Â ÄÃ·³ÀÇ °ªÀÌ NULL ÀÌ ¾Æ´Ï¸é true, NULL ÀÌ¸é false
+IS NULL : ë¹„êµí•˜ë ¤ëŠ” ì»¬ëŸ¼ì˜ ê°’ì´ NULL ì´ë©´ true, NULL ì´ ì•„ë‹ˆë©´ false
+IS NOT NULL : ë¹„êµí•˜ë ¤ëŠ” ì»¬ëŸ¼ì˜ ê°’ì´ NULL ì´ ì•„ë‹ˆë©´ true, NULL ì´ë©´ false
 
-NULL °ªÀº ÄÃ·³Àº ºñ±³¿¬»êÀÚ¿Í ¿¬»êÀÌ ºÒ°¡´É ÇÏ¹Ç·Î
-NULL °ª ºñ±³ ¿¬»êÀÚ°¡ µû·Î Á¸ÀçÇÔ
+NULL ê°’ì€ ì»¬ëŸ¼ì€ ë¹„êµì—°ì‚°ìžì™€ ì—°ì‚°ì´ ë¶ˆê°€ëŠ¥ í•˜ë¯€ë¡œ
+NULL ê°’ ë¹„êµ ì—°ì‚°ìžê°€ ë”°ë¡œ ì¡´ìž¬í•¨
 
-col1 = null ==> NULL °ª¿¡ ´ëÇØ¼­´Â = ºñ±³ ¿¬»êÀÚ »ç¿ë ºÒ°¡´É
-col1 ! = null ==> NULL °ª¿¡ ´ëÇØ¼­´Â !=, <> ºñ±³ ¿¬»êÀÚ »ç¿ë ºÒ°¡´É
+col1 = null ==> NULL ê°’ì— ëŒ€í•´ì„œëŠ” = ë¹„êµ ì—°ì‚°ìž ì‚¬ìš© ë¶ˆê°€ëŠ¥
+col1 ! = null ==> NULL ê°’ì— ëŒ€í•´ì„œëŠ” !=, <> ë¹„êµ ì—°ì‚°ìž ì‚¬ìš© ë¶ˆê°€ëŠ¥
 */
 
---- 27) ¾î¶² Á÷¿øÀÇ mgr°¡ ÁöÁ¤µÇÁö ¾ÊÀº Á÷¿øÀÇ Á¤º¸
+--- 27) ì–´ë–¤ ì§ì›ì˜ mgrê°€ ì§€ì •ë˜ì§€ ì•Šì€ ì§ì›ì˜ ì •ë³´
 SELECT e.EMPNO
      , e.ENAME
      , e.MGR
@@ -29,15 +29,15 @@ EMPNO, ENAME, MGR
 7777	J%JONES	
 */
 
---- mgrÀÌ ¹èÁ¤µÈ Á÷¿ø Á¤º¸ Á¶È¸
+--- mgrì´ ë°°ì •ëœ ì§ì› ì •ë³´ ì¡°íšŒ
 SELECT e.EMPNO
      , e.ENAME
      , e.MGR
   FROM emp e
  WHERE e.MGR IS NOT NULL
 ;
--- e.MGR != NULL Àº »ç¿ëÇÒ ¼ö ¾øÀ½ 
--- e.MGR <> NULL Àº »ç¿ëÇÒ ¼ö ¾øÀ½
+-- e.MGR != NULL ì€ ì‚¬ìš©í•  ìˆ˜ ì—†ìŒ 
+-- e.MGR <> NULL ì€ ì‚¬ìš©í•  ìˆ˜ ì—†ìŒ
 /*
 EMPNO, ENAME, MGR
 ------------------------------
@@ -53,20 +53,20 @@ EMPNO, ENAME, MGR
 7902	FORD	7566
 7934	MILLER	7782
 */
--- IS NOT NULL ´ë½Å <> != ¿¬»êÀÚ¸¦ »ç¿ëÇÑ °æ¿ìÀÇ Á¶È¸ °á°ú ºñ±³
+-- IS NOT NULL ëŒ€ì‹  <> != ì—°ì‚°ìžë¥¼ ì‚¬ìš©í•œ ê²½ìš°ì˜ ì¡°íšŒ ê²°ê³¼ ë¹„êµ
 SELECT e.EMPNO
      , e.ENAME
      , e.MGR
   FROM emp e
  WHERE e.MGR <> NULL
 ;
--- > ÀÎÃâµÈ ¸ðµç Çà : 0
--- > ½ÇÇà¿¡ ¿À·ù´Â ¾øÁö¸¸ ¿Ã¹Ù¸¥ °á°ú°¡ ¾Æ´Ô 
+-- > ì¸ì¶œëœ ëª¨ë“  í–‰ : 0
+-- > ì‹¤í–‰ì— ì˜¤ë¥˜ëŠ” ì—†ì§€ë§Œ ì˜¬ë°”ë¥¸ ê²°ê³¼ê°€ ì•„ë‹˜ 
 
--- BETWEEN ~ AND ~ : ¹üÀ§ ºñ±³ ¿¬»êÀÚ ¹üÀ§ Æ÷ÇÔ
---- a <= sal <= b  : ÀÌ·¯ÇÑ ¹üÀ§ ¿¬»ê°ú µ¿ÀÏ
+-- BETWEEN ~ AND ~ : ë²”ìœ„ ë¹„êµ ì—°ì‚°ìž ë²”ìœ„ í¬í•¨
+--- a <= sal <= b  : ì´ëŸ¬í•œ ë²”ìœ„ ì—°ì‚°ê³¼ ë™ì¼
 
---- 28) ±Þ¿©°¡ 500 ~ 1200 »çÀÌÀÎ Á÷¿ø Á¤º¸ Á¶È¸
+--- 28) ê¸‰ì—¬ê°€ 500 ~ 1200 ì‚¬ì´ì¸ ì§ì› ì •ë³´ ì¡°íšŒ
 SELECT e.EMPNO
      , e.ENAME
      , e.SAL
@@ -74,13 +74,13 @@ SELECT e.EMPNO
  WHERE e.SAL BETWEEN 500 AND 1200
 ;
 
--- BETWEEN 500 AND 1200 °ú °°Àº °á°ú¸¦ ³»´Â ºñ±³¿¬»êÀÚ
+-- BETWEEN 500 AND 1200 ê³¼ ê°™ì€ ê²°ê³¼ë¥¼ ë‚´ëŠ” ë¹„êµì—°ì‚°ìž
 SELECT e.EMPNO
      , e.ENAME
      , e.SAL
   FROM emp e
  WHERE e.SAL >= 500
-   AND e.SAL <= 1200 -- µîÈ£°¡ µé¾î°¡´Â ºñ±³ ¿¬»êÀÚ¸¦ »ç¿ë
+   AND e.SAL <= 1200 -- ë“±í˜¸ê°€ ë“¤ì–´ê°€ëŠ” ë¹„êµ ì—°ì‚°ìžë¥¼ ì‚¬ìš©
 ;
 
 /*-------------------
@@ -90,26 +90,26 @@ NOT COMM = 0
 NOT COMM IN (0)
 ---------------------*/
 
--- EXISTS ¿¬»êÀÚ : Á¶È¸ÇÑ °á°ú°¡ 1Çà ÀÌ»ó ÀÖ´Ù.
---                ¾î¶² SELECT ±¸¹®À» ½ÇÇàÇßÀ» ¶§ Á¶È¸ °á°ú°¡ 1Çà ÀÌ»ó ÀÖÀ¸¸é
---                ÀÌ ¿¬»êÀÚÀÇ °á°ú°¡ ture
---                Á¶È¸ °á°ú : <ÀÎÃâµÈ ¸ðµç Çà : 0> ÀÎ °æ¿ì false
---                µû¶ó¼­ ¼­ºêÄõ¸®¿Í ÇÔ²² »ç¿ëµÊ
--- EXISTS ( Á¶È¸°á°ú°¡ ÀÖ´Ù OR ¾ø´Ù) << FULL SELECT FROM
+-- EXISTS ì—°ì‚°ìž : ì¡°íšŒí•œ ê²°ê³¼ê°€ 1í–‰ ì´ìƒ ìžˆë‹¤.
+--                ì–´ë–¤ SELECT êµ¬ë¬¸ì„ ì‹¤í–‰í–ˆì„ ë•Œ ì¡°íšŒ ê²°ê³¼ê°€ 1í–‰ ì´ìƒ ìžˆìœ¼ë©´
+--                ì´ ì—°ì‚°ìžì˜ ê²°ê³¼ê°€ ture
+--                ì¡°íšŒ ê²°ê³¼ : <ì¸ì¶œëœ ëª¨ë“  í–‰ : 0> ì¸ ê²½ìš° false
+--                ë”°ë¼ì„œ ì„œë¸Œì¿¼ë¦¬ì™€ í•¨ê»˜ ì‚¬ìš©ë¨
+-- EXISTS ( ì¡°íšŒê²°ê³¼ê°€ ìžˆë‹¤ OR ì—†ë‹¤) << FULL SELECT FROM
 
---- 29) ±Þ¿©°¡ 10000ÀÌ ³Ñ´Â »ç¶÷ÀÌ ÀÖ´Â°¡?
---  (1) ±Þ¿©°¡ 10000ÀÌ ³Ñ´Â»ç¶÷À» Ã£´Â ±¸¹®À» ÀÛ¼º
+--- 29) ê¸‰ì—¬ê°€ 10000ì´ ë„˜ëŠ” ì‚¬ëžŒì´ ìžˆëŠ”ê°€?
+--  (1) ê¸‰ì—¬ê°€ 10000ì´ ë„˜ëŠ”ì‚¬ëžŒì„ ì°¾ëŠ” êµ¬ë¬¸ì„ ìž‘ì„±
 SELECT e.ENAME
   FROM emp e
  WHERE e.SAL > 10000
 ;
 
 /*
-À§ÀÇ Äû¸® ½ÇÇà °á°ú°¡ 1Çà ÀÌ¶óµµ Á¸ÀçÇÏ¸é È­¸é¿¡
-"±Þ¿©°¡ 3000ÀÌ ³Ñ´Â Á÷¿øÀÌ Á¸ÀçÇÔ" ÀÌ¶ó°í Ãâ·Â
+ìœ„ì˜ í€´ë¦¬ ì‹¤í–‰ ê²°ê³¼ê°€ 1í–‰ ì´ë¼ë„ ì¡´ìž¬í•˜ë©´ í™”ë©´ì—
+"ê¸‰ì—¬ê°€ 3000ì´ ë„˜ëŠ” ì§ì›ì´ ì¡´ìž¬í•¨" ì´ë¼ê³  ì¶œë ¥
 */
 
-SELECT '±Þ¿©°¡ 3000ÀÌ ³Ñ´Â Á÷¿øÀÌ Á¸ÀçÇÔ' as "½Ã½ºÅÛ ¸Þ¼¼Áö"
+SELECT 'ê¸‰ì—¬ê°€ 3000ì´ ë„˜ëŠ” ì§ì›ì´ ì¡´ìž¬í•¨' as "ì‹œìŠ¤í…œ ë©”ì„¸ì§€"
   FROM dual
  WHERE EXISTS (SELECT e.ENAME
                  FROM emp e
@@ -117,33 +117,34 @@ SELECT '±Þ¿©°¡ 3000ÀÌ ³Ñ´Â Á÷¿øÀÌ Á¸ÀçÇÔ' as "½Ã½ºÅÛ ¸Þ¼¼Áö"
 ;
 
 /*
-À§ÀÇ Äû¸® ½ÇÇà °á°ú°¡ 1Çà ÀÌ¶óµµ Á¸ÀçÇÏÁö ¾ÊÀ¸¸é È­¸é¿¡
-"±Þ¿©°¡ 10000ÀÌ ³Ñ´Â Á÷¿øÀÌ Á¸ÀçÇÏÁö ¾ÊÀ½" ÀÌ¶ó°í Ãâ·Â
+ìœ„ì˜ í€´ë¦¬ ì‹¤í–‰ ê²°ê³¼ê°€ 1í–‰ ì´ë¼ë„ ì¡´ìž¬í•˜ì§€ ì•Šìœ¼ë©´ í™”ë©´ì—
+"ê¸‰ì—¬ê°€ 10000ì´ ë„˜ëŠ” ì§ì›ì´ ì¡´ìž¬í•˜ì§€ ì•ŠìŒ" ì´ë¼ê³  ì¶œë ¥
 */
 
-SELECT '±Þ¿©°¡ 10000ÀÌ ³Ñ´Â Á÷¿øÀÌ Á¸ÀçÇÏÁö ¾ÊÀ½' as "½Ã½ºÅÛ ¸Þ¼¼Áö"
+SELECT 'ê¸‰ì—¬ê°€ 10000ì´ ë„˜ëŠ” ì§ì›ì´ ì¡´ìž¬í•˜ì§€ ì•ŠìŒ' as "ì‹œìŠ¤í…œ ë©”ì„¸ì§€"
   FROM dual
  WHERE NOT EXISTS (SELECT e.ENAME
                      FROM emp e
                     WHERE e.SAL > 10000)
 ;
 
--- (6) ¿¬»êÀÚ : °áÇÕ¿¬»êÀÚ || 
--- ¿À¶óÅ¬¿¡¸¸ Á¸Àç, ¹®ÀÚ¿­ °áÇÕ(Á¢ÇÕ)
--- ´Ù¸¥ ÀÚ¹Ù µîÀÇ ÇÁ·Î±×·¡¹Ö ¾ð¾î¿¡¼­´Â OR ³í¸® ¿¬»êÀÚ·Î »ç¿ëµÇ¹Ç·Î
--- È¥µ¿¿¡ ÁÖÀÇ
+-- (6) ì—°ì‚°ìž : ê²°í•©ì—°ì‚°ìž || 
+-- ì˜¤ë¼í´ì—ë§Œ ì¡´ìž¬, ë¬¸ìžì—´ ê²°í•©(ì ‘í•©)
+-- ë‹¤ë¥¸ ìžë°” ë“±ì˜ í”„ë¡œê·¸ëž˜ë° ì–¸ì–´ì—ì„œëŠ” OR ë…¼ë¦¬ ì—°ì‚°ìžë¡œ ì‚¬ìš©ë˜ë¯€ë¡œ
+-- í˜¼ë™ì— ì£¼ì˜
 
--- ¿À´ÃÀÇ ³¯Â¥¸¦ È­¸é¿¡ Á¶È¸
+-- ì˜¤ëŠ˜ì˜ ë‚ ì§œë¥¼ í™”ë©´ì— ì¡°íšŒ
 SELECT sysdate
   FROM dual
 ;
 
--- ¿À´ÃÀÇ ³¯Â¥¸¦ ¾Ë·ÁÁÖ´Â ¹®ÀåÀ» ¸¸µé·Á¸é
-SELECT '¿À´ÃÀÇ ³¯Â¥´Â ' ||sysdate|| ' ÀÔ´Ï´Ù.' as "¿À´ÃÀÇ ³¯Â¥"
+-- ì˜¤ëŠ˜ì˜ ë‚ ì§œë¥¼ ì•Œë ¤ì£¼ëŠ” ë¬¸ìž¥ì„ ë§Œë“¤ë ¤ë©´
+SELECT 'ì˜¤ëŠ˜ì˜ ë‚ ì§œëŠ” ' ||sysdate|| ' ìž…ë‹ˆë‹¤.' as "ì˜¤ëŠ˜ì˜ ë‚ ì§œ"
   FROM dual
 ;
 
--- Á÷¿øÀÇ »ç¹øÀ» ¾Ë·ÁÁÖ´Â ±¸¹®À» || ¿¬»êÀÚ¸¦ »ç¿ëÇÏ¿© ÀÛ¼º
-SELECT '¾È³çÇÏ¼¼¿ä. ' ||e.ENAME|| '¾¾, ´ç½ÅÀÇ »ç¹øÀº ' || e.EMPNO || 'ÀÔ´Ï´Ù' "»ç¹ø ¾Ë¸®¹Ì"
+-- ì§ì›ì˜ ì‚¬ë²ˆì„ ì•Œë ¤ì£¼ëŠ” êµ¬ë¬¸ì„ || ì—°ì‚°ìžë¥¼ ì‚¬ìš©í•˜ì—¬ ìž‘ì„±
+SELECT 'ì•ˆë…•í•˜ì„¸ìš”. ' || e.ENAME || 'ì”¨, ë‹¹ì‹ ì˜ ì‚¬ë²ˆì€ ' || e.EMPNO || 'ìž…ë‹ˆë‹¤' "ì‚¬ë²ˆ ì•Œë¦¬ë¯¸"
   FROM emp e
 ;
+ 
