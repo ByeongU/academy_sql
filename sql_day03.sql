@@ -432,7 +432,7 @@ SELECT e.DEPTNO   "부서 번호"
 
 -- 1. 매니저별, 부하직원의 수를 구하고, 많은 순으로 정렬
 SELECT nvl(e.MGR ||'', '미배정') "매니저"
-     , COUNT(e.MGR)             "부하직원의 수"
+     , COUNT(*)             "부하직원의 수"
   FROM emp e
  GROUP BY e.MGR
  ORDER BY COUNT(e.MGR) DESC
@@ -440,7 +440,7 @@ SELECT nvl(e.MGR ||'', '미배정') "매니저"
 
 -- 2. 부서별 인원을 구하고, 인원수 많은 순으로 정렬
 SELECT nvl(e.DEPTNO|| '', '미배정') "부서 번호"
-     , COUNT(e.DEPTNO)        "인원수"
+     , COUNT(*)        "인원수"
   FROM emp e
  GROUP BY e.DEPTNO
  ORDER BY COUNT(e.DEPTNO) DESC
@@ -462,6 +462,14 @@ SELECT nvl(e.JOB || '', '미배정') " 직무"
 ;
 -- 5. 급여의 앞단위가 1000이하, 1000, 2000, 3000, 5000 별로 인원수를 구하시오.
 --    급여 단위 오름차순 정렬
+SELECT CASE WHEN TRUNC(e.SAL,-3) < 1000 THEN '1000미만'
+            ELSE TRUNC(e.SAL,-3) || ''
+        END as "급여 단위"
+      , COUNT (TRUNC(e.SAL, -3)) as "인원(명)"
+  FROM emp e
+ GROUP BY TRUNC(e.SAL, -3)
+ ORDER BY TRUNC(e.SAL, -3)
+;
 
 -----------------------------------------------------------------------------------
 -- 5번을 다른 함수로 풀이
