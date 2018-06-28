@@ -1,13 +1,13 @@
 -- sql day 01
--- 1. SCOTT °èÁ¤ È°¼ºÈ­ : SYS °èÁ¤À¸·Î Á¢¼ÓÇÏ¿© ½ºÅ©¸³Æ® ½ÇÇà
+-- 1. SCOTT ê³„ì • í™œì„±í™” : SYS ê³„ì •ìœ¼ë¡œ ì ‘ì†í•˜ì—¬ ìŠ¤í¬ë¦½íŠ¸ ì‹¤í–‰
 @C:\oraclexe\app\oracle\product\11.2.0\server\rdbms\admin\scott.sql
--- 2. Á¢¼Ó À¯Àú È®ÀÎ ¸í·É
+-- 2. ì ‘ì† ìœ ì € í™•ì¸ ëª…ë ¹
 show user
--- 3. HR °èÁ¤ È°¼ºÈ­ : sys °èÁ¤À¸·Î Á¢¼ÓÇÏ¿©
---                    ´Ù¸¥ »ç¿ëÀÚ È®Àå ÈÄ HR °èÁ¤ÀÇ
---                    °èÁ¤Àá±è, ºñ¹Ð¹øÈ£ ¸¸·á »óÅÂ ÇØÁ¦
+-- 3. HR ê³„ì • í™œì„±í™” : sys ê³„ì •ìœ¼ë¡œ ì ‘ì†í•˜ì—¬
+--                    ë‹¤ë¥¸ ì‚¬ìš©ìž í™•ìž¥ í›„ HR ê³„ì •ì˜
+--                    ê³„ì •ìž ê¹€, ë¹„ë°€ë²ˆí˜¸ ë§Œë£Œ ìƒíƒœ í•´ì œ
 ---------------------------------------------------------------------
--- (1) EMP Å×ÀÌºí ³»¿ë Á¶È¸
+-- (1) EMP í…Œì´ë¸” ë‚´ìš© ì¡°íšŒ
 SELECT *
   FROM EMP
 ;
@@ -26,7 +26,7 @@ SELECT *
 7902	FORD	ANALYST	    7566	81/12/03	3000		    20
 7934	MILLER	CLERK	    7782	82/01/23	1300		    10
 ------------------------------------------------------------------ */
--- (2) DEPT Å×ÀÌºí ³»¿ë Á¶È¸
+-- (2) DEPT í…Œì´ë¸” ë‚´ìš© ì¡°íšŒ
 SELECT *
   FROM DEPT
 ;
@@ -38,11 +38,11 @@ SELECT *
 40	OPERATIONS	BOSTON
 ------------------------ */
 
--- (3) SALGRADE Å×ÀÌºí ³»¿ë Á¶È¸
+-- (3) SALGRADE í…Œì´ë¸” ë‚´ìš© ì¡°íšŒ
 SELECT *
   FROM SALGRADE 
 ;
-
+ 
 /*----------------------
 GRADE, LOSAL, HISAL
 1	   700	  1200
@@ -53,22 +53,22 @@ GRADE, LOSAL, HISAL
 ------------------------ */
 
 /*---------------------------------
-SELECT ¹®   
-5 SELECT [PREDICATE]                    Àû¿ëµÈ °ªµéÁß ÇÊ¿ä ÄÃ·³ ¼±ÅÃ 
-1   FROM table1,table2                  ´ë»ó Å×ÀÌºí¿¡¼­ °Ë»ö ½ÃÀÛ
-2  WHERE Á¶°Ç                            Á¶°Ç¿¡ ¸Â´Â Çà ¼±ÅÃ
-3  GROUP BY col1,coln[, ...]            ÁöÁ¤ ÄÃ·³À¸·Î ±×·ìÈ­
-4 HAVING Á¶°Ç                            ±×·ìÈ­ °á°ú¿¡ Á¶°Ç Àû¿ë
-6  ORDER BY col1,[, ...] [ASC|DESC]     ¼±ÅÃµÈ ÄÃ·³ Á¤·Ä
+SELECT ë¬¸   
+5 SELECT [PREDICATE]                    ì ìš©ëœ ê°’ë“¤ì¤‘ í•„ìš” ì»¬ëŸ¼ ì„ íƒ 
+1   FROM table1,table2                  ëŒ€ìƒ í…Œì´ë¸”ì—ì„œ ê²€ìƒ‰ ì‹œìž‘
+2  WHERE ì¡°ê±´                            ì¡°ê±´ì— ë§žëŠ” í–‰ ì„ íƒ
+3  GROUP BY col1,coln[, ...]            ì§€ì • ì»¬ëŸ¼ìœ¼ë¡œ ê·¸ë£¹í™”
+4 HAVING ì¡°ê±´                            ê·¸ë£¹í™” ê²°ê³¼ì— ì¡°ê±´ ì ìš©
+6  ORDER BY col1,[, ...] [ASC|DESC]     ì„ íƒëœ ì»¬ëŸ¼ ì •ë ¬
 ------------------------------------*/
 
 -- 01.DQL : SELECT
--- (1) SELECT ±¸¹®
--- emp Å×ÀÌºí¿¡¼­ »ç¹ø, ÀÌ¸§, Á÷¹«¸¦ Á¶È¸
+-- (1) SELECT êµ¬ë¬¸
+-- emp í…Œì´ë¸”ì—ì„œ ì‚¬ë²ˆ, ì´ë¦„, ì§ë¬´ë¥¼ ì¡°íšŒ
 SELECT e.EMPNO
      , e.ENAME
      , e.JOB
-  FROM emp e --¼Ò¹®ÀÚ e´Â alias(º°Äª)
+  FROM emp e --ì†Œë¬¸ìž eëŠ” alias(ë³„ì¹­)
 ;
 
 /*---------------------------------------
@@ -86,7 +86,7 @@ SELECT e.EMPNO
 7934	MILLER	CLERK
 ---------------------------------------*/
 
--- emp Å×ÀÌºí¿¡¼­ Á÷¹«¸¸ Á¶È¸
+-- emp í…Œì´ë¸”ì—ì„œ ì§ë¬´ë§Œ ì¡°íšŒ
 SELECT e.JOB
   FROM emp e
 ;
@@ -106,8 +106,8 @@ ANALYST
 CLERK
 */
 
--- (2) DISTINCT ¹® : SELECT ¹® »ç¿ë½Ã Áßº¹À» ¹èÁ¦ÇÏ¿© Á¶È¸
--- emp Å×ÀÌºí¿¡¼­ JOB ÄÃ·³ÀÇ Áßº¹À» ¹èÁ¦ÇÏ¿© Á¶È¸
+-- (2) DISTINCT ë¬¸ : SELECT ë¬¸ ì‚¬ìš©ì‹œ ì¤‘ë³µì„ ë°°ì œí•˜ì—¬ ì¡°íšŒ
+-- emp í…Œì´ë¸”ì—ì„œ JOB ì»¬ëŸ¼ì˜ ì¤‘ë³µì„ ë°°ì œí•˜ì—¬ ì¡°íšŒ
 SELECT DISTINCT e.JOB
   FROM emp e
 ;
@@ -120,8 +120,8 @@ MANAGER
 ANALYST
 --------- */
 
--- * SQL SELECT ±¸¹®ÀÇ ÀÛµ¿ ¿ø¸® : Å×ÀÌºíÀÇ ÇÑ ÇàÀ» ±âº» ´ÜÀ§·Î ½ÇÇàÇÔ.
---                               Å×ÀÌºí ÇàÀÇ °³¼ö¸¸Å­ ¹Ýº¹ ½ÇÇÛ.
+-- * SQL SELECT êµ¬ë¬¸ì˜ ìž‘ë™ ì›ë¦¬ : í…Œì´ë¸”ì˜ í•œ í–‰ì„ ê¸°ë³¸ ë‹¨ìœ„ë¡œ ì‹¤í–‰í•¨.
+--                               í…Œì´ë¸” í–‰ì˜ ê°œìˆ˜ë§Œí¼ ë°˜ë³µ ì‹¤í•¼.
 SELECT 'Hello, SQL~'
   FROM emp e
 ;
@@ -140,7 +140,7 @@ Hello, SQL~
 Hello, SQL~
 -------------- */
 
--- emp Å×ÀÌºí¿¡¼­ job, deptno ¿¡ ´ëÇØ Áßº¹À» Á¦°ÅÇÏ¿© Á¶È¸
+-- emp í…Œì´ë¸”ì—ì„œ job, deptno ì— ëŒ€í•´ ì¤‘ë³µì„ ì œê±°í•˜ì—¬ ì¡°íšŒ
 SELECT DISTINCT
        e.JOB
      , e.DEPTNO
@@ -159,8 +159,8 @@ CLERK   	30
 CLERK   	20
 ----------------- */
 
--- (3) ORDER BY Àý : Á¤·Ä (Ascending,Descending)
--- 5) emp Å×ÀÌºí¿¡¼­ JOB À» Áßº¹À» ¹èÁ¦ÇÏ¿© Á¶È¸ÇÏ°í ¿À¸§Â÷¼øÀ¸·Î Á¤·Ä
+-- (3) ORDER BY ì ˆ : ì •ë ¬ (Ascending,Descending)
+-- 5) emp í…Œì´ë¸”ì—ì„œ JOB ì„ ì¤‘ë³µì„ ë°°ì œí•˜ì—¬ ì¡°íšŒí•˜ê³  ì˜¤ë¦„ì°¨ìˆœìœ¼ë¡œ ì •ë ¬
 SELECT DISTINCT 
        e.JOB
   FROM emp e
@@ -175,7 +175,7 @@ PRESIDENT
 SALESMAN
 -------- */
 
--- 6) emp Å×ÀÌºí¿¡¼­ job À» Áßº¹À» ¹èÁ¦ÇÏ¿© Á¶È¸ÇÏ°í ³»¸²Â÷¼øÀ¸·Î Á¤·Ä
+-- 6) emp í…Œì´ë¸”ì—ì„œ job ì„ ì¤‘ë³µì„ ë°°ì œí•˜ì—¬ ì¡°íšŒí•˜ê³  ë‚´ë¦¼ì°¨ìˆœìœ¼ë¡œ ì •ë ¬
 SELECT DISTINCT 
        e.JOB
   FROM emp e
@@ -190,8 +190,8 @@ CLERK
 ANALYST
 -------- */
 
--- 7) emp Å×ÀÌºí¿¡¼­ comm À» °¡Àå ¸¹ÀÌ ¹Þ´Â ¼ø¼­´ë·Î Ãâ·Â
---    »ç¹ø, ÀÌ¸§, Á÷¹«, ÀÔ»çÀÏ, Ä¿¹Ì¼Ç ¼øÀ¸·Î Á¶È¸
+-- 7) emp í…Œì´ë¸”ì—ì„œ comm ì„ ê°€ìž¥ ë§Žì´ ë°›ëŠ” ìˆœì„œëŒ€ë¡œ ì¶œë ¥
+--    ì‚¬ë²ˆ, ì´ë¦„, ì§ë¬´, ìž…ì‚¬ì¼, ì»¤ë¯¸ì…˜ ìˆœìœ¼ë¡œ ì¡°íšŒ
 SELECT e.EMPNO
      , e.ENAME
      , e.JOB
@@ -216,8 +216,8 @@ SELECT e.EMPNO
 7844	TURNER	SALESMAN	81/09/08	0
 -------------------------------------------------------- */
 
--- 8) emp Å×ÀÌºí¿¡¼­ comm ÀÌ ÀûÀº ¼ø¼­´ë·Î, Á÷¹«º° ¿À¸§Â÷¼ø, ÀÌ¸§º° ¿À¸§Â÷¼øÀ¸·Î Á¤·Ä
---    »ç¹ø, ÀÌ¸§, Á÷¹«, ÀÔ»çÀÏ, Ä¿¹Ì¼ÇÀ» Á¶È¸
+-- 8) emp í…Œì´ë¸”ì—ì„œ comm ì´ ì ì€ ìˆœì„œëŒ€ë¡œ, ì§ë¬´ë³„ ì˜¤ë¦„ì°¨ìˆœ, ì´ë¦„ë³„ ì˜¤ë¦„ì°¨ìˆœìœ¼ë¡œ ì •ë ¬
+--    ì‚¬ë²ˆ, ì´ë¦„, ì§ë¬´, ìž…ì‚¬ì¼, ì»¤ë¯¸ì…˜ì„ ì¡°íšŒ
 SELECT e.EMPNO
      , e.ENAME
      , e.JOB
@@ -242,8 +242,8 @@ SELECT e.EMPNO
 7839	KING	PRESIDENT	81/11/17	
 ------------------------------------------------- */
 
--- 9) emp Å×ÀÌºí¿¡¼­ commÀÌ ÀûÀº ¼ø¼­´ë·Î, Á÷¹«º° ¿À¸§Â÷¼ø, ÀÌ¸§º° ³»¸²Â÷¼øÀ¸·Î Á¤·Ä
---    »ç¹ø, ÀÌ¸§, Á÷¹«, ÀÔ»çÀÏ, Ä¿¹Ì¼ÇÀ» Á¶È¸
+-- 9) emp í…Œì´ë¸”ì—ì„œ commì´ ì ì€ ìˆœì„œëŒ€ë¡œ, ì§ë¬´ë³„ ì˜¤ë¦„ì°¨ìˆœ, ì´ë¦„ë³„ ë‚´ë¦¼ì°¨ìˆœìœ¼ë¡œ ì •ë ¬
+--    ì‚¬ë²ˆ, ì´ë¦„, ì§ë¬´, ìž…ì‚¬ì¼, ì»¤ë¯¸ì…˜ì„ ì¡°íšŒ
 SELECT e.EMPNO
      , e.ENAME
      , e.JOB
@@ -268,8 +268,8 @@ SELECT e.EMPNO
 7839	KING	PRESIDENT	81/11/17	
 --------------------------------------------------- */
 
--- (4)ALIAS : º°Äª
--- 10) emp Å×ÀÌºí¿¡¼­ ¾Æ·¡ °¢ ÄÃ·³¿¡ º°ÄªÀ» Ç®³×ÀÓÀ» ÁÖ¾î¼­ Á¶È¸
+-- (4)ALIAS : ë³„ì¹­
+-- 10) emp í…Œì´ë¸”ì—ì„œ ì•„ëž˜ ê° ì»¬ëŸ¼ì— ë³„ì¹­ì„ í’€ë„¤ìž„ì„ ì£¼ì–´ì„œ ì¡°íšŒ
 --      empno --> Employee No.
 --      ename --> Employee Name
 --      job   --> Job Name
@@ -279,24 +279,24 @@ SELECT e.EMPNO as "Employee No."
   FROM emp e
 ;
 
--- 11) 10¹ø°ú µ¿ÀÏ AS Å°¿öµå »ý·«ÇÏ¿© Á¶È¸
+-- 11) 10ë²ˆê³¼ ë™ì¼ AS í‚¤ì›Œë“œ ìƒëžµí•˜ì—¬ ì¡°íšŒ
 SELECT e.EMPNO  "Employee No."
      , e.ENAME  "Employee Name"
      , e.JOB    "Job Name"
   FROM emp e
 ;
 
---      ÄÃ·³¿¡ º°ÄªÀ» ÇÑ±Û·Î º¯°æÈÄ Á¶È¸
---      empno --> »ç¹ø
---      ename --> »ç¿ø ÀÌ¸§
---      job   --> Á÷¹«
-SELECT e.EMPNO »ç¹ø 
-     , e.ENAME "»ç¿ø ÀÌ¸§"
-     , e.JOB   "Á÷¹«"
+--      ì»¬ëŸ¼ì— ë³„ì¹­ì„ í•œê¸€ë¡œ ë³€ê²½í›„ ì¡°íšŒ
+--      empno --> ì‚¬ë²ˆ
+--      ename --> ì‚¬ì› ì´ë¦„
+--      job   --> ì§ë¬´
+SELECT e.EMPNO ì‚¬ë²ˆ 
+     , e.ENAME "ì‚¬ì› ì´ë¦„"
+     , e.JOB   "ì§ë¬´"
   FROM emp e
 ;
 
--- 12) Å×ÀÌºí¿¡ ºÙÀÌ´Â º°ÄªÀ» ÁÖÁö ¾Ê¾ÒÀ» ¶§
+-- 12) í…Œì´ë¸”ì— ë¶™ì´ëŠ” ë³„ì¹­ì„ ì£¼ì§€ ì•Šì•˜ì„ ë•Œ
 SELECT empno
   FROM emp
 ;
@@ -305,42 +305,42 @@ SELECT emp.empno
   FROM emp
 ;
 
-SELECT e.empno --FROM Àý¿¡¼­ ¼³Á¤µÈ Å×ÀÌºí º°ÄªÀº SELECT Àý¿¡¼­ »ç¿ëµÊ.
-  FROM emp e -- ¼Ò¹®ÀÚ e°¡ emp Å×ÀÌºíÀÇ º°ÄªÀÌ¸ç Å×ÀÌºí º°ÄªÀº FROM Àý¿¡ »ç¿ëÇÔ
+SELECT e.empno --FROM ì ˆì—ì„œ ì„¤ì •ëœ í…Œì´ë¸” ë³„ì¹­ì€ SELECT ì ˆì—ì„œ ì‚¬ìš©ë¨.
+  FROM emp e -- ì†Œë¬¸ìž eê°€ emp í…Œì´ë¸”ì˜ ë³„ì¹­ì´ë©° í…Œì´ë¸” ë³„ì¹­ì€ FROM ì ˆì— ì‚¬ìš©í•¨
 ;
 
 SELECT d.DEPTNO
   FROM dept d
 ;
 
--- 13) ¿µ¹®º°Äª »ç¿ë½Ã Æ¯¼ö±âÈ£ _ »ç¿ëÇÏ´Â °æ¿ì
-SELECT e.EMPNO Employee_No -- ¿µ¹®ÀÚ º°Äª¿¡ ""À» »ç¿ëÇÏÁö¾ÊÀ» °æ¿ì ¸ðµÎ ´ë¹®ÀÚ·Î Ãâ·ÂµÊ
+-- 13) ì˜ë¬¸ë³„ì¹­ ì‚¬ìš©ì‹œ íŠ¹ìˆ˜ê¸°í˜¸ _ ì‚¬ìš©í•˜ëŠ” ê²½ìš°
+SELECT e.EMPNO Employee_No -- ì˜ë¬¸ìž ë³„ì¹­ì— ""ì„ ì‚¬ìš©í•˜ì§€ì•Šì„ ê²½ìš° ëª¨ë‘ ëŒ€ë¬¸ìžë¡œ ì¶œë ¥ë¨
      , e.ENAME "Employee Name"
   FROM emp e
 ;
 
--- 14) º°Äª°ú Á¤·ÄÀÇ Á¶ÇÕ : SELECT Àý¿¡ º°ÄªÀ» ÁØ °æ¿ì ORDER BY Àý¿¡¼­ »ç¿ë°¡´É
---     emp Å×ÀÌºí¿¡¼­ »ç¹ø, ÀÌ¸§, Á÷¹«, ÀÔ»çÀÏ, Ä¿¹Ì¼ÇÀ» Á¶È¸ÇÒ ¶§
---     °¢ ÄÃ·³¿¡ ´ëÇØ¼­ ÇÑ±Ûº°ÄªÀ» ÁÖ¾î Á¶È¸
---     Á¤·ÄÀº Ä¿¹Ì¼Ç, Á÷¹«, ÀÌ¸§À» ¿À¸§Â÷¼ø Á¤·Ä
-SELECT e.EMPNO »ç¹ø
-     , e.ENAME ÀÌ¸§
-     , e.JOB   Á÷¹«
-     , e.HIREDATE ÀÔ»çÀÏ
-     , e.COMM Ä¿¹Ì¼Ç
+-- 14) ë³„ì¹­ê³¼ ì •ë ¬ì˜ ì¡°í•© : SELECT ì ˆì— ë³„ì¹­ì„ ì¤€ ê²½ìš° ORDER BY ì ˆì—ì„œ ì‚¬ìš©ê°€ëŠ¥
+--     emp í…Œì´ë¸”ì—ì„œ ì‚¬ë²ˆ, ì´ë¦„, ì§ë¬´, ìž…ì‚¬ì¼, ì»¤ë¯¸ì…˜ì„ ì¡°íšŒí•  ë•Œ
+--     ê° ì»¬ëŸ¼ì— ëŒ€í•´ì„œ í•œê¸€ë³„ì¹­ì„ ì£¼ì–´ ì¡°íšŒ
+--     ì •ë ¬ì€ ì»¤ë¯¸ì…˜, ì§ë¬´, ì´ë¦„ì„ ì˜¤ë¦„ì°¨ìˆœ ì •ë ¬
+SELECT e.EMPNO ì‚¬ë²ˆ
+     , e.ENAME ì´ë¦„
+     , e.JOB   ì§ë¬´
+     , e.HIREDATE ìž…ì‚¬ì¼
+     , e.COMM ì»¤ë¯¸ì…˜
   FROM emp e
- ORDER BY Ä¿¹Ì¼Ç , Á÷¹«, ÀÌ¸§
+ ORDER BY ì»¤ë¯¸ì…˜ , ì§ë¬´, ì´ë¦„
 ;
 
--- 15) DISTINCT, º°Äª, Á¤·ÄÀÇ Á¶ÇÕ
---     jobÀ» Áßº¹À» Á¦°ÅÇÏ¿© Á÷¹« ¶ó´Â º°ÄªÀ» Á¶È¸ÇÏ°í
---     ³»¸²Â÷¼øÀ¸·Î Á¤·Ä
-SELECT DISTINCT e.JOB Á÷¹«
+-- 15) DISTINCT, ë³„ì¹­, ì •ë ¬ì˜ ì¡°í•©
+--     jobì„ ì¤‘ë³µì„ ì œê±°í•˜ì—¬ ì§ë¬´ ë¼ëŠ” ë³„ì¹­ì„ ì¡°íšŒí•˜ê³ 
+--     ë‚´ë¦¼ì°¨ìˆœìœ¼ë¡œ ì •ë ¬
+SELECT DISTINCT e.JOB ì§ë¬´
   FROM emp e
- ORDER BY Á÷¹« DESC
+ ORDER BY ì§ë¬´ DESC
 ;
 /*
-Á÷¹«
+ì§ë¬´
 ----------
 SALESMAN
 PRESIDENT
@@ -349,9 +349,9 @@ CLERK
 ANALYST
 */
 
--- (5) WHERE Á¶°Ç Àý
--- 16) emp Å×ÀÌºí¿¡¼­ EMPNO ÀÌ 7900ÀÎ »ç¿øÀÇ
---     »ç¹ø, ÀÌ¸§, Á÷¹«, ÀÔ»çÀÏ, ±Þ¿©, ºÎ¼­¹øÈ£
+-- (5) WHERE ì¡°ê±´ ì ˆ
+-- 16) emp í…Œì´ë¸”ì—ì„œ EMPNO ì´ 7900ì¸ ì‚¬ì›ì˜
+--     ì‚¬ë²ˆ, ì´ë¦„, ì§ë¬´, ìž…ì‚¬ì¼, ê¸‰ì—¬, ë¶€ì„œë²ˆí˜¸
 SELECT e.EMPNO
      , e.ENAME
      , e.JOB
@@ -368,8 +368,8 @@ EMPNO, ENAME, JOB, HIREDATE, SAL, DEPTNO
 7900	JAMES	CLERK	81/12/03	950	30
 */
 
--- 17) emp Å×ÀÌºí¿¡¼­ empno ´Â 7900 ÀÌ°Å³ª deptno °¡ 20ÀÎ Á÷¿øÀÇ Á¤º¸¸¦
---     »ç¹ø, ÀÌ¸§, Á÷¹«, ÀÔ»çÀÏ, ±Þ¿©, ºÎ¼­¹øÈ£¸¸ Á¶È¸
+-- 17) emp í…Œì´ë¸”ì—ì„œ empno ëŠ” 7900 ì´ê±°ë‚˜ deptno ê°€ 20ì¸ ì§ì›ì˜ ì •ë³´ë¥¼
+--     ì‚¬ë²ˆ, ì´ë¦„, ì§ë¬´, ìž…ì‚¬ì¼, ê¸‰ì—¬, ë¶€ì„œë²ˆí˜¸ë§Œ ì¡°íšŒ
 SELECT e.EMPNO
      , e.ENAME
      , e.JOB
@@ -390,7 +390,7 @@ EMPNO, ENAME, JOB, HIREDATE, SAL, DEPTNO
 7902	FORD	ANALYST	81/12/03	3000	20
 */
 
--- 18) 17¹øÀÇ Á¶È¸Á¶°ÇÀ» AND Á¶°ÇÀ¸·Î Á¶ÇÕ
+-- 18) 17ë²ˆì˜ ì¡°íšŒì¡°ê±´ì„ AND ì¡°ê±´ìœ¼ë¡œ ì¡°í•©
 --     
 SELECT e.EMPNO
      , e.ENAME
@@ -402,17 +402,17 @@ SELECT e.EMPNO
  WHERE e.EMPNO = 7900
    AND e.DEPTNO = 20
 ;
--- ÀÎÃâµÈ ¸ðµç Çà : 0
+-- ì¸ì¶œëœ ëª¨ë“  í–‰ : 0
 
--- 19) job ÀÌ 'CLERK' ÀÌ¸é¼­ deptno °¡ 10ÀÎ Á÷¿øÀÇ
---     »ç¹ø, ÀÌ¸§, Á÷¹«, ºÎ¼­¹øÈ£¸¦ Á¶È¸
+-- 19) job ì´ 'CLERK' ì´ë©´ì„œ deptno ê°€ 10ì¸ ì§ì›ì˜
+--     ì‚¬ë²ˆ, ì´ë¦„, ì§ë¬´, ë¶€ì„œë²ˆí˜¸ë¥¼ ì¡°íšŒ
 SELECT e.EMPNO
      , e.ENAME
      , e.JOB
      , e.DEPTNO
   FROM emp e
- WHERE e.JOB = 'CLERK' -- ¹®ÀÚ°ª ºñ±³½Ã ''»ç¿ë, ¹®ÀÚ°ªÀº ´ë¼Ò¹®ÀÚ ±¸ºÐ
-   AND e.DEPTNO = 10   -- ¼ýÀÚ°ª ºñ±³½Ã µû¿ÈÇ¥ »ç¿ë¾ÈÇÔ
+ WHERE e.JOB = 'CLERK' -- ë¬¸ìžê°’ ë¹„êµì‹œ ''ì‚¬ìš©, ë¬¸ìžê°’ì€ ëŒ€ì†Œë¬¸ìž êµ¬ë¶„
+   AND e.DEPTNO = 10   -- ìˆ«ìžê°’ ë¹„êµì‹œ ë”°ì˜´í‘œ ì‚¬ìš©ì•ˆí•¨
 ;
 
 /*
@@ -421,7 +421,7 @@ EMPNO, ENAME, JOB, DEPTNO
 7934	MILLER	CLERK	10
 */
 
--- 20) 19¹ø¿¡¼­ Á÷¹« ºñ±³ °ªÀ» ¼Ò¹®ÀÚ clerk °ú ºñ±³ÇÏ¿© °á°ú¸¦ È®ÀÎ
+-- 20) 19ë²ˆì—ì„œ ì§ë¬´ ë¹„êµ ê°’ì„ ì†Œë¬¸ìž clerk ê³¼ ë¹„êµí•˜ì—¬ ê²°ê³¼ë¥¼ í™•ì¸
 
 SELECT e.EMPNO
      , e.ENAME
@@ -432,20 +432,20 @@ SELECT e.EMPNO
    AND e.DEPTNO = 10  
 ;
 
--- ¼Ò¹®ÀÚ clerk ·Î ÀúÀåµÈ Á÷¹«´Â Á¸ÀçÇÏÁö ¾ÊÀ¸¹Ç·Î Á¶°Ç¿¡ ¸Â´Â ÇàÀÌ ¾øÀ½
--- ÀÎÃâµÈ ¸ðµç Çà : 0 °á°ú°¡ ¹ß»ýÇÔ
+-- ì†Œë¬¸ìž clerk ë¡œ ì €ìž¥ëœ ì§ë¬´ëŠ” ì¡´ìž¬í•˜ì§€ ì•Šìœ¼ë¯€ë¡œ ì¡°ê±´ì— ë§žëŠ” í–‰ì´ ì—†ìŒ
+-- ì¸ì¶œëœ ëª¨ë“  í–‰ : 0 ê²°ê³¼ê°€ ë°œìƒí•¨
 
--- (6) ¿¬»êÀÚ 1. »ê¼ú¿¬»êÀÚ
--- 21) »ç¹ø, ÀÌ¸§, ±Þ¿©¸¦ Á¶È¸ÇÏ°í, ±Þ¿©ÀÇ 3.3%¿¡ ÇØ´çÇÏ´Â ¿øÃµÂ¡¼ö ¼¼±ÝÀ» °è»êÇÏ¿© Á¶È¸
-SELECT e.EMPNO »ç¹ø
-     , e.ENAME ÀÌ¸§
-     , e.SAL   ±Þ¿©
-     , e.SAL * 0.033 ¿øÃµÂ¡¼ö¼¼±Ý
+-- (6) ì—°ì‚°ìž 1. ì‚°ìˆ ì—°ì‚°ìž
+-- 21) ì‚¬ë²ˆ, ì´ë¦„, ê¸‰ì—¬ë¥¼ ì¡°íšŒí•˜ê³ , ê¸‰ì—¬ì˜ 3.3%ì— í•´ë‹¹í•˜ëŠ” ì›ì²œì§•ìˆ˜ ì„¸ê¸ˆì„ ê³„ì‚°í•˜ì—¬ ì¡°íšŒ
+SELECT e.EMPNO ì‚¬ë²ˆ
+     , e.ENAME ì´ë¦„
+     , e.SAL   ê¸‰ì—¬
+     , e.SAL * 0.033 ì›ì²œì§•ìˆ˜ì„¸ê¸ˆ
   FROM emp e
 ;
 
 /*
-»ç¹ø, ÀÌ¸§, ±Þ¿©, ¿øÃµÂ¡¼ö¼¼±Ý
+ì‚¬ë²ˆ, ì´ë¦„, ê¸‰ì—¬, ì›ì²œì§•ìˆ˜ì„¸ê¸ˆ
 ------------------------------
 7369	SMITH	800	    26.4
 7499	ALLEN	1600	52.8
@@ -461,17 +461,17 @@ SELECT e.EMPNO »ç¹ø
 7934	MILLER	1300	42.9
 */
 
--- ½Ç¼ö·É¾×¿¡ ÇØ´çÇÏ´Â 96.7%ÀÇ ±Þ¿©µµ °è»êÇÏ¿© Á¶È¸
-SELECT e.EMPNO »ç¹ø
-     , e.ENAME ÀÌ¸§
-     , e.SAL   ±Þ¿©
-     , e.SAL * 0.033 ¿øÃµÂ¡¼ö¼¼±Ý
-     , e.SAL * 0.967 ½Ç¼ö·É¾×
+-- ì‹¤ìˆ˜ë ¹ì•¡ì— í•´ë‹¹í•˜ëŠ” 96.7%ì˜ ê¸‰ì—¬ë„ ê³„ì‚°í•˜ì—¬ ì¡°íšŒ
+SELECT e.EMPNO ì‚¬ë²ˆ
+     , e.ENAME ì´ë¦„
+     , e.SAL   ê¸‰ì—¬
+     , e.SAL * 0.033 ì›ì²œì§•ìˆ˜ì„¸ê¸ˆ
+     , e.SAL * 0.967 ì‹¤ìˆ˜ë ¹ì•¡
   FROM emp e
 ;
 
 /*
-»ç¹ø, ÀÌ¸§, ±Þ¿©, ¿øÃµÂ¡¼ö¼¼±Ý, ½Ç¼ö·É¾×
+ì‚¬ë²ˆ, ì´ë¦„, ê¸‰ì—¬, ì›ì²œì§•ìˆ˜ì„¸ê¸ˆ, ì‹¤ìˆ˜ë ¹ì•¡
 -----------------------------------------------
 7369	SMITH	800	    26.4	773.6
 7499	ALLEN	1600	52.8	1547.2
@@ -487,20 +487,20 @@ SELECT e.EMPNO »ç¹ø
 7934	MILLER	1300	42.9	1257.1
 */
 
---µ¿ÀÏ°á°ú¸¦ ³»´Â ´Ù¸¥ °è»ê
-SELECT e.EMPNO »ç¹ø
-     , e.ENAME ÀÌ¸§
-     , e.SAL   ±Þ¿©
-     , e.SAL * 0.033 ¿øÃµÂ¡¼ö¼¼±Ý
-     , e.SAL - (e.SAL * 0.033) ½Ç¼ö·É¾×
+--ë™ì¼ê²°ê³¼ë¥¼ ë‚´ëŠ” ë‹¤ë¥¸ ê³„ì‚°
+SELECT e.EMPNO ì‚¬ë²ˆ
+     , e.ENAME ì´ë¦„
+     , e.SAL   ê¸‰ì—¬
+     , e.SAL * 0.033 ì›ì²œì§•ìˆ˜ì„¸ê¸ˆ
+     , e.SAL - (e.SAL * 0.033) ì‹¤ìˆ˜ë ¹ì•¡
   FROM emp e
 ;
 
--- (6) ¿¬»ñÀÚ 2. ºñ±³¿¬»êÀÚ
---     ºñ±³¿¬»êÀÚ´Â SELECT Àý¿¡ »ç¿ëÇÒ ¼ö ¾øÀ½
---     WHERE, HAVING Àý¿¡¸¸ »ç¿ëÇÔ
+-- (6) ì—°ì‚¿ìž 2. ë¹„êµì—°ì‚°ìž
+--     ë¹„êµì—°ì‚°ìžëŠ” SELECT ì ˆì— ì‚¬ìš©í•  ìˆ˜ ì—†ìŒ
+--     WHERE, HAVING ì ˆì—ë§Œ ì‚¬ìš©í•¨
 
--- 22) ±Þ¿©°¡ 2000ÀÌ ³Ñ´Â »ç¿øÀÇ »ç¹ø, ÀÌ¸§, ±Þ¿©¸¦ Á¶È¸
+-- 22) ê¸‰ì—¬ê°€ 2000ì´ ë„˜ëŠ” ì‚¬ì›ì˜ ì‚¬ë²ˆ, ì´ë¦„, ê¸‰ì—¬ë¥¼ ì¡°íšŒ
 SELECT e.EMPNO
      , e.ENAME
      , e.SAL
@@ -508,7 +508,7 @@ SELECT e.EMPNO
  WHERE e.SAL > 2000
 ;
 
--- ±Þ¿©°¡ 1000ÀÌ»óÀÎ Á÷¿øÀÇ »ç¹ø, ÀÌ¸§, ±Þ¿©¸¦ Á¶È¸
+-- ê¸‰ì—¬ê°€ 1000ì´ìƒì¸ ì§ì›ì˜ ì‚¬ë²ˆ, ì´ë¦„, ê¸‰ì—¬ë¥¼ ì¡°íšŒ
 SELECT e.EMPNO
      , e.ENAME
      , e.SAL
@@ -516,7 +516,7 @@ SELECT e.EMPNO
  WHERE e.SAL >= 1000
 ;
 
--- ±Þ¿©°¡ 1000ÀÌ»óÀÌ¸ç 2000¹Ì¸¸ÀÎ Á÷¿øÀÇ »ç¹ø, ÀÌ¸§, ±Þ¿©¸¦ Á¶È¸
+-- ê¸‰ì—¬ê°€ 1000ì´ìƒì´ë©° 2000ë¯¸ë§Œì¸ ì§ì›ì˜ ì‚¬ë²ˆ, ì´ë¦„, ê¸‰ì—¬ë¥¼ ì¡°íšŒ
 SELECT e.EMPNO
      , e.ENAME
      , e.SAL
@@ -525,7 +525,7 @@ SELECT e.EMPNO
    AND e.SAL < 2000
 ;
 
--- COMM °ªÀÌ 0º¸´Ù Å« Á÷¿øÀÇ »ç¹ø, ÀÌ¸§, ±Þ¿©¸¦ Á¶È¸
+-- COMM ê°’ì´ 0ë³´ë‹¤ í° ì§ì›ì˜ ì‚¬ë²ˆ, ì´ë¦„, ê¸‰ì—¬ë¥¼ ì¡°íšŒ
 SELECT e.EMPNO
      , e.ENAME
      , e.SAL
@@ -533,17 +533,17 @@ SELECT e.EMPNO
  WHERE e.COMM > 0
 ;
 /*
- À§ÀÇ ½ÇÇà °á°ú¿¡¼­ comm ÀÌ (null)ÀÎ »ç¶÷µéÀÇ ÇàÀº
- Ã³À½ºÎÅÍ ºñ±³´ë»ó¿¡ µéÁö ¾ÊÀ½¿¡ ÁÖÀÇÇØ¾ß ÇÑ´Ù.
- (null) °ªÀº ºñ±³¿¬»êÀÚ·Î ºñ±³ÇÒ ¼ö ¾ø´Â °ªÀÌ´Ù.
+ ìœ„ì˜ ì‹¤í–‰ ê²°ê³¼ì—ì„œ comm ì´ (null)ì¸ ì‚¬ëžŒë“¤ì˜ í–‰ì€
+ ì²˜ìŒë¶€í„° ë¹„êµëŒ€ìƒì— ë“¤ì§€ ì•ŠìŒì— ì£¼ì˜í•´ì•¼ í•œë‹¤.
+ (null) ê°’ì€ ë¹„êµì—°ì‚°ìžë¡œ ë¹„êµí•  ìˆ˜ ì—†ëŠ” ê°’ì´ë‹¤.
 */
 
--- 23) ¿µ¾÷»ç¿ø(SALESMAN) Á÷¹«¸¦ °¡Áø »ç¶÷µéÀº ±Þ¿©¿Í ¼ö´çÀ» ÇÔ²² ¹ÞÀ¸¹Ç¸£
---     ¿µ¾÷»ç¿øÀÇ ½ÇÁ¦ ¼ö·É±ÝÀ» °è»êÇØº¸ÀÚ
+-- 23) ì˜ì—…ì‚¬ì›(SALESMAN) ì§ë¬´ë¥¼ ê°€ì§„ ì‚¬ëžŒë“¤ì€ ê¸‰ì—¬ì™€ ìˆ˜ë‹¹ì„ í•¨ê»˜ ë°›ìœ¼ë¯€ë¥´
+--     ì˜ì—…ì‚¬ì›ì˜ ì‹¤ì œ ìˆ˜ë ¹ê¸ˆì„ ê³„ì‚°í•´ë³´ìž
 SELECT e.EMPNO
      , e.ENAME
      , e.JOB
-     , e.SAL + e.COMM "±Þ¿© + ¼ö´ç"
+     , e.SAL + e.COMM "ê¸‰ì—¬ + ìˆ˜ë‹¹"
   FROM emp e
 ;
 
@@ -562,19 +562,19 @@ SELECT e.EMPNO
 7934	MILLER	CLERK	
 */
 
-==> ¼ýÀÚ °ª°ú (null) °ªÀÇ »ê¼ú ¿¬»ê °á°ú´Â °á±¹ (null) ÀÓÀ» ÁÖÀÇÇÏÀÚ
+==> ìˆ«ìž ê°’ê³¼ (null) ê°’ì˜ ì‚°ìˆ  ì—°ì‚° ê²°ê³¼ëŠ” ê²°êµ­ (null) ìž„ì„ ì£¼ì˜í•˜ìž
 
--- (6) ¿¬»êÀÚ 3. ³í¸®¿¬»êÀÚ
--- NOT ¿¬»êÀÚ
+-- (6) ì—°ì‚°ìž 3. ë…¼ë¦¬ì—°ì‚°ìž
+-- NOT ì—°ì‚°ìž
 
--- 24) ±Þ¿©°¡ 2000º¸´Ù ÀûÁö ¾ÊÀº Á÷¿øÀÇ »ç¹ø, ÀÌ¸§, ±Þ¿©¸¦ Á¶È¸
+-- 24) ê¸‰ì—¬ê°€ 2000ë³´ë‹¤ ì ì§€ ì•Šì€ ì§ì›ì˜ ì‚¬ë²ˆ, ì´ë¦„, ê¸‰ì—¬ë¥¼ ì¡°íšŒ
 SELECT e.EMPNO
      , e.ENAME
      , e.SAL
   FROM emp e
  WHERE NOT e.SAL < 2000
 ;
--- µ¿ÀÏ °á°ú¸¦ ³»´Â ´Ù¸¥ Äõ¸® NOT »ç¿ëÇÏÁö ¾ÊÀ½
+-- ë™ì¼ ê²°ê³¼ë¥¼ ë‚´ëŠ” ë‹¤ë¥¸ ì¿¼ë¦¬ NOT ì‚¬ìš©í•˜ì§€ ì•ŠìŒ
 SELECT e.EMPNO
      , e.ENAME
      , e.SAL
@@ -582,10 +582,10 @@ SELECT e.EMPNO
  WHERE e.SAL >= 2000
  ;
 
--- (6) ¿¬»êÀÚ 4. SQL ¿¬»êÀÚ
--- IN ¿¬»êÀÚ : ºñ±³ÇÏ°íÀÚ ÇÏ´Â ±âÁØ °ªÀÌ Á¦½ÃµÈ Ç×¸ñ ¸ñ·Ï¿¡ Á¸ÀçÇÏ¸é ÂüÀ¸·Î ÆÇ´Ü
+-- (6) ì—°ì‚°ìž 4. SQL ì—°ì‚°ìž
+-- IN ì—°ì‚°ìž : ë¹„êµí•˜ê³ ìž í•˜ëŠ” ê¸°ì¤€ ê°’ì´ ì œì‹œëœ í•­ëª© ëª©ë¡ì— ì¡´ìž¬í•˜ë©´ ì°¸ìœ¼ë¡œ íŒë‹¨
 
--- 25) ±Þ¿©°¡ 800, 3000, 5000Áß¿¡ ÇÏ³ªÀÎ Á÷¿øÀÇ »ç¹ø, ÀÌ¸§, ±Þ¿©¸¦ Á¶È¸
+-- 25) ê¸‰ì—¬ê°€ 800, 3000, 5000ì¤‘ì— í•˜ë‚˜ì¸ ì§ì›ì˜ ì‚¬ë²ˆ, ì´ë¦„, ê¸‰ì—¬ë¥¼ ì¡°íšŒ
 SELECT e.EMPNO
      , e.ENAME
      , e.SAL
@@ -594,7 +594,7 @@ SELECT e.EMPNO
     OR e.SAL = 3000
     OR e.SAL = 5000
 ;
--- IN ¿¬»êÀÚ¸¦ »ç¿ëÇÏ¿© ÇØ°á
+-- IN ì—°ì‚°ìžë¥¼ ì‚¬ìš©í•˜ì—¬ í•´ê²°
 SELECT e.EMPNO
      , e.ENAME
      , e.SAL
@@ -602,64 +602,64 @@ SELECT e.EMPNO
  WHERE e.SAL IN (800, 3000, 5000)
 ;
 
--- LIKE ¿¬»êÀÚ : À¯»ç °ªÀ» °Ë»öÇÏ´Âµ¥ »ç¿ë
-/* LIKE ¿¬»êÀÚ´Â À¯»ç °ª °Ë»öÀ» À§ÇØ ÇÔ²² »ç¿ëÇÏ´Â ÆÐÅÏ ÀÎ½Ä ¹®ÀÚ°¡ ÀÖ´Ù.
-   % : 0ÀÚ¸´¼ö ÀÌ»óÀÇ ¸ðµç ¹®ÀÚ ÆÐÅÏÀÌ ¿Ã ¼ö ÀÖÀ½
-   _ : 1ÀÚ¸®ÀÇ ¸ðµç ¹®ÀÚ ÆÐÅÏÀÌ ¿Ã ¼ö ÀÖÀ½
+-- LIKE ì—°ì‚°ìž : ìœ ì‚¬ ê°’ì„ ê²€ìƒ‰í•˜ëŠ”ë° ì‚¬ìš©
+/* LIKE ì—°ì‚°ìžëŠ” ìœ ì‚¬ ê°’ ê²€ìƒ‰ì„ ìœ„í•´ í•¨ê»˜ ì‚¬ìš©í•˜ëŠ” íŒ¨í„´ ì¸ì‹ ë¬¸ìžê°€ ìžˆë‹¤.
+   % : 0ìžë¦¿ìˆ˜ ì´ìƒì˜ ëª¨ë“  ë¬¸ìž íŒ¨í„´ì´ ì˜¬ ìˆ˜ ìžˆìŒ
+   _ : 1ìžë¦¬ì˜ ëª¨ë“  ë¬¸ìž íŒ¨í„´ì´ ì˜¬ ìˆ˜ ìžˆìŒ
 */
 
--- 26) ÀÌ¸§ÀÌ J ·Î ½ÃÀÛÇÏ´Â Á÷¿øÀÇ »ç¹ø, ÀÌ¸§ Á¶È¸
+-- 26) ì´ë¦„ì´ J ë¡œ ì‹œìž‘í•˜ëŠ” ì§ì›ì˜ ì‚¬ë²ˆ, ì´ë¦„ ì¡°íšŒ
 SELECT e.EMPNO
      , e.ENAME
   FROM emp e
  WHERE e.ENAME LIKE 'J%'
 ;
 
--- ÀÌ¸§ÀÌ MÀ¸·Î ½ÃÀÛÇÏ´Â Á÷¿øÀÇ »ç¹ø, ÀÌ¸§ Á¶È¸
+-- ì´ë¦„ì´ Mìœ¼ë¡œ ì‹œìž‘í•˜ëŠ” ì§ì›ì˜ ì‚¬ë²ˆ, ì´ë¦„ ì¡°íšŒ
 SELECT e.EMPNO
      , e.ENAME
   FROM emp e
  WHERE e.ENAME LIKE 'M%'
 ;
 
--- ÀÌ¸§¿¡  MÀÌ µé¾î°¡´Â Á÷¿øÀÇ »ç¹ø, ÀÌ¸§ Á¶È¸
+-- ì´ë¦„ì—  Mì´ ë“¤ì–´ê°€ëŠ” ì§ì›ì˜ ì‚¬ë²ˆ, ì´ë¦„ ì¡°íšŒ
 SELECT e.EMPNO
      , e.ENAME
   FROM emp e
  WHERE e.ENAME LIKE '%M%'
 ;
      
--- ÀÌ¸§ÀÇ µÎ¹øÂ° ÀÚ¸®¿¡ MÀÌ µé¾î°¡´Â Á÷¿øÀÇ »ç¹ø, ÀÌ¸§ Á¶È¸
+-- ì´ë¦„ì˜ ë‘ë²ˆì§¸ ìžë¦¬ì— Mì´ ë“¤ì–´ê°€ëŠ” ì§ì›ì˜ ì‚¬ë²ˆ, ì´ë¦„ ì¡°íšŒ
 SELECT e.EMPNO
      , e.ENAME
   FROM emp e
- WHERE e.ENAME LIKE '_M%' -- À¯»ç ÆÐÅÏ ÀÎ½Ä ¹®ÀÚ¸¦ _¸¦ »ç¿ëÇÏ¿© ÇÑ±ÛÀÚ·Î Á¦ÇÑ
+ WHERE e.ENAME LIKE '_M%' -- ìœ ì‚¬ íŒ¨í„´ ì¸ì‹ ë¬¸ìžë¥¼ _ë¥¼ ì‚¬ìš©í•˜ì—¬ í•œê¸€ìžë¡œ ì œí•œ
 ;
 
--- ÀÌ¸§ÀÇ ¼¼¹øÂ° ÀÚ¸®¿¡ MÀÌ µé¾î°¡´Â Á÷¿øÀÇ »ç¹ø, ÀÌ¸§ Á¶È¸
+-- ì´ë¦„ì˜ ì„¸ë²ˆì§¸ ìžë¦¬ì— Mì´ ë“¤ì–´ê°€ëŠ” ì§ì›ì˜ ì‚¬ë²ˆ, ì´ë¦„ ì¡°íšŒ
 SELECT e.EMPNO
      , e.ENAME
   FROM emp e
- WHERE e.ENAME LIKE '__M%' -- À¯»ç ÆÐÅÏ ÀÎ½Ä ¹®ÀÚ¸¦ _¸¦ µÎ¹ø »ç¿ëÇÏ¿© ¾ÕÀÚ¸®¸¦ 2±ÛÀÚ·Î Á¦ÇÑ;
+ WHERE e.ENAME LIKE '__M%' -- ìœ ì‚¬ íŒ¨í„´ ì¸ì‹ ë¬¸ìžë¥¼ _ë¥¼ ë‘ë²ˆ ì‚¬ìš©í•˜ì—¬ ì•žìžë¦¬ë¥¼ 2ê¸€ìžë¡œ ì œí•œ;
 ;
 
--- ÀÌ¸§ÀÇ µÑÂ°ÀÚ¸®ºÎÅÍ LA°¡ µé¾î°¡´Â ÀÌ¸§À» °¡Áø Á÷¿øÀÇ »ç¹ø, ÀÌ¸§ Á¶È¸
+-- ì´ë¦„ì˜ ë‘˜ì§¸ìžë¦¬ë¶€í„° LAê°€ ë“¤ì–´ê°€ëŠ” ì´ë¦„ì„ ê°€ì§„ ì§ì›ì˜ ì‚¬ë²ˆ, ì´ë¦„ ì¡°íšŒ
 SELECT e.EMPNO
      , e.ENAME
   FROM emp e
  WHERE e.ENAME LIKE '_LA%'
 ;
 
--- ÀÌ¸§ÀÌ j_·Î  ½ÃÀÛÇÏ´Â Á÷¿øÀÇ »ç¹ø, ÀÌ¸§ Á¶È¸
--- : Á¶È¸ °ª¿¡ ÆÐÅÏÀÎ½Ä ¹®ÀÚ°¡ µé¾îÀÖ´Â µ¥ÀÌÅÍÀÇ °æ¿ì ¾î¶»°Ô Á¶È¸ÇÒ °ÍÀÎ°¡?
+-- ì´ë¦„ì´ j_ë¡œ  ì‹œìž‘í•˜ëŠ” ì§ì›ì˜ ì‚¬ë²ˆ, ì´ë¦„ ì¡°íšŒ
+-- : ì¡°íšŒ ê°’ì— íŒ¨í„´ì¸ì‹ ë¬¸ìžê°€ ë“¤ì–´ìžˆëŠ” ë°ì´í„°ì˜ ê²½ìš° ì–´ë–»ê²Œ ì¡°íšŒí•  ê²ƒì¸ê°€?
 SELECT e.EMPNO
      , e.ENAME
   FROM emp e
  WHERE e.ENAME LIKE 'J\_%' ESCAPE '\'
 ;
--- Á¶È¸ÇÏ·Á´Â °ª¿¡ µé¾îÀÖ´Â ÆÐÅÏÀÎ½Ä ¹®ÀÚ¸¦ ¹«È¿È­ ÇÏ·Á¸é ESCAPE °á°ú Á¶ÇÕÇÑ´Ù
+-- ì¡°íšŒí•˜ë ¤ëŠ” ê°’ì— ë“¤ì–´ìžˆëŠ” íŒ¨í„´ì¸ì‹ ë¬¸ìžë¥¼ ë¬´íš¨í™” í•˜ë ¤ë©´ ESCAPE ê²°ê³¼ ì¡°í•©í•œë‹¤
 
--- ÀÌ¸§ÀÌ J%·Î ½ÃÀÛÇÏ´Â Á÷¿øÀÇ »ç¹ø, ÀÌ¸§ Á¶È¸
+-- ì´ë¦„ì´ J%ë¡œ ì‹œìž‘í•˜ëŠ” ì§ì›ì˜ ì‚¬ë²ˆ, ì´ë¦„ ì¡°íšŒ
 SELECT e.EMPNO
      , e.ENAME
   FROM emp e
