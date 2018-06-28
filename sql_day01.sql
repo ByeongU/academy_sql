@@ -42,7 +42,7 @@ SELECT *
 SELECT *
   FROM SALGRADE 
 ;
- 
+
 /*----------------------
 GRADE, LOSAL, HISAL
 1	   700	  1200
