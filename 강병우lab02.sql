@@ -239,11 +239,11 @@ SELECT e.EMPNO "사번"
      , e.ENAME "이름"
      , e.SAL   "월 급여"
      , TO_CHAR (DECODE(e.JOB, 'CLERK' ,300
-                   , 'SALESMAN', 450
-                   , 'MANAGER', 600
-                   , 'ANALYST', 800
-                   , 'PRESIDENT', 1000),'$9,999') " 자기개발비"
-  FROM emp e
+                            , 'SALESMAN', 450
+                            , 'MANAGER', 600
+                            , 'ANALYST', 800
+                            , 'PRESIDENT', 1000),'$9,999') " 자기개발비"
+  FROM emp e        
 ;
 
 /*

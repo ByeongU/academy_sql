@@ -746,10 +746,10 @@ SELECT e.EMPNO
      , e.ENAME
      , e.JOB
      , DECODE(e.JOB
-              , 'CLERK', e.SAL * 0.05
-              , 'SALESMAN', e.SAL * 0.04
-              , 'MANAGER', e.SAL * 0.037
-              , 'ANALYST', e.SAL * 0.03
+              , 'CLERK',     e.SAL * 0.05
+              , 'SALESMAN',  e.SAL * 0.04
+              , 'MANAGER',   e.SAL * 0.037
+              , 'ANALYST',   e.SAL * 0.03
               , 'PRESIDENT', e.SAL * 0.015) "경조사비 지원금"
   FROM emp e
 ;
