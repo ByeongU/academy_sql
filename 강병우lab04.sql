@@ -61,3 +61,8 @@ EMPNO, ENAME, JOB, MGR, HIREDATE, SAL, COMM, DEPTNO
 8888	J	    CLERK		    18/06/27	400		
 7777	J%JUNES	CLERK		    18/06/27	300		
 */
+
+-- 실습 6)
+
+-------------------------------DDL
+-- 실습 1)
