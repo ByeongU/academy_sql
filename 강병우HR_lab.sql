@@ -59,7 +59,11 @@ SELECT e.FIRST_NAME
 --5. Steven King 의 직속 부하직원의 모든 정보를 조회
 --14건
 -- 조인 이용
+<<<<<<< HEAD
 SELECT e.*
+=======
+SELECT *
+>>>>>>> a54e888cf26f7c0df4251a19598cef57637682d9
   FROM employees e
      , DEPARTMENTS d
  WHERE e.DEPARTMENT_ID = d.DEPARTMENT_ID
@@ -67,6 +71,7 @@ SELECT e.*
 ;
 
 -- 서브쿼리 이용
+<<<<<<< HEAD
 SELECT e.*
   FROM employees e
  WHERE e.MANAGER_ID = (SELECT d.MANAGER_ID
@@ -91,12 +96,25 @@ SELECT e.JOB_ID
  WHERE e.JOB_ID = j.JOB_ID
  GROUP BY e.JOB_ID, j.JOB_TITLE
 ;
+=======
+ 
+--6. Steven King의 직속 부하직원 중에서 Commission_pct 값이 null이 아닌 직원 목록
+--5건
+
+--7. 각 job 별 최대급여를 구하여 출력 job_id, job_title, job별 최대급여 조회
+--19건
+
+>>>>>>> a54e888cf26f7c0df4251a19598cef57637682d9
 
  
 --8. 각 Job 별 최대급여를 받는 사람의 정보를 출력,
 --  급여가 높은 순서로 출력
 ----서브쿼리 이용
+<<<<<<< HEAD
 
+=======
+ 
+>>>>>>> a54e888cf26f7c0df4251a19598cef57637682d9
 ----join 이용
 
 
