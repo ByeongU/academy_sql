@@ -320,13 +320,339 @@ UPDATE member m
   
 */
 
+-- UPDATE 구문에 SELECT 서브쿼리 사용
+-- 'M08' 아이디의 phone, gender 수정
+UPDATE member m
+   SET m.PHONE = '3318'
+     , m.GENDER = 'M'
+ WHERE m.MEMBER_ID = 'M08'
+;
 
+-- 서브쿼리 사용
+UPDATE member m
+   SET m.PHONE = '3318'
+     , m.GENDER = 'M'
+ WHERE m.ADDRESS = (SELECT m.ADDRESS
+                      FROM member m
+                     WHERE m.MEMBER_ID = 'M08')  -- 서브쿼리는 1행 1열만 나오게 해야됨
+;
+-- 1 행 이(가) 업데이트되었습니다.
 
+SELECT m.ADDRESS
+  FROM member m
+ WHERE m.MEMBER_ID = 'M08'
+;
 
+-- 'M13' 유재성 멤버의 성별 업데이트
+UPDATE member m
+   SET m.GENDER = (SELECT substr('MATH', 1, 1) FROM dual)
+ WHERE m.MEMBER_ID = 'M13'
+;
 
+-- 1 행 이(가) 업데이트되었습니다.
+SELECT substr('MATH', 1, 1)
+  FROM dual;
 
+-- 'M12' 데이터 gender 컬럼 수정시 제약 조건 위반
+UPDATE member m
+   SET m.GENDER = 'N'
+ WHERE m.MEMBER_ID = 'M12'
+;
 
+/*
+오류 보고 - ORA-02290: check constraint (SCOTT.CK_MEMBER_GENDER) violated
+*/
 
+-- address 가 null 인 사람들의 주소를 일괄 '대전' 으로 수정
+UPDATE member m
+   SET m.ADDRESS = '대전'
+ WHERE m.ADDRESS IS NULL
+;
+-- 5개 행 이(가) 업데이트되었습니다.
+
+commit;
+-- 커밋 완료.
+
+----------------------------------------------------------------------------------
+-- 3) DELETE : 테이블에서 행단위로 데이터 삭제
+
+--- 1. WHERE 조건이 있는 DELETE 구문
+
+-- 삭제 전 커밋
+commit;
+
+-- gender 가 'F'인 데이터를 삭제
+DELETE member m
+ WHERE m.GENDER = 'R'
+;
+-- 0개 행 이(가) 삭제되었습니다.
+-- 이 결과는 gender에 R 값이 없으므로
+-- 삭제된 행이 없는 결과를 얻은 것 뿐
+-- 구문오류는 아님, 논리적으로 잘못된 결과인 것.
+DELETE member m
+ WHERE m.GENDER = 'F'
+;
+-- 2개 행 이(가) 삭제되었습니다.
+-- WHERE 조건절에 만족하는 모든 행에 대해 삭제 작업 진행
+
+-- 데이터 되돌림
+ROLLBACK;
+
+-- M99 1행을 삭제하고 싶다면 PK로 삭제하자
+DELETE member m
+ WHERE m.MEMBER_ID = 'M99'
+;
+--1 행 이(가) 삭제되었습니다.
+COMMIT;
+-- 커밋 완료.
+
+--- 2. WHERE 조건이 없는 DELETE 구문
+-- WHERE 조건을 아예 누락(생략)한 경우 전체행 삭제
+DELETE member;
+-- 13개 행 이(가) 삭제되었습니다.
+ROLLBACK;
+-- 롤백 완료.
+
+--- 3. DELETE 의 WHERE  에 서브쿼리 조합
+-- 주소가 대전인 사람을 모두 삭제
+-- (1) 주소가 대전인 사람을 조회
+SELECT m.MEMBER_ID
+  FROM member m
+ WHERE m.ADDRESS = '대전'
+;
+
+-- (2) 삭제하는 메인 쿼리 작성
+DELETE member m
+ WHERE m.MEMBER_ID IN (SELECT m.MEMBER_ID
+                         FROM member m
+                        WHERE m.ADDRESS = '대전')
+;
+-- 5개 행 이(가) 삭제되었습니다.
+ROLLBACK;
+
+-- 위와 동일한 작업을 일반 WHERE 로 삭제
+DELETE member m
+ WHERE m.ADDRESS = '대전'
+;
+
+-----------------------------------------------------------------------
+-- DELETE vs. TRUNCATE
+/*
+  1. TRUNCATE 는 DDL 에 속하는 명령어
+     ROLLBACK 지점을 생성하지 않음
+    따라서 한 번 실행된 DDL을 되돌릴 수 없음.
+    
+  2. TRUNCATE 는 WHERE 절 조합이 안되므로
+     특정 데이터 선별하여 삭제하는 것이 불가능.
+     
+     사용시 주의
+*/
+
+-- new_member 테이블을 TRUNCATE 로 날려보자
+
+-- 실행 전 되돌아갈 커밋 지점 생성
+COMMIT;
+
+-- new_member 내용 확인
+SELECT m.*
+  FROM new_member m
+;
+
+-- TRUNCATE 로 new_member 테이블 잘라내기
+TRUNCATE TABLE new_member;
+-- Table NEW_MEMBER이(가) 잘렸습니다.
+
+-- new_member 내용 확인
+SELECT m.*
+  FROM new_member m
+;
+
+-- 되돌리기 시도
+ROLLBACK;
+
+-- DDL 종류의 구문은 생성즉시 바로 커밋이 이루어짐.
+-- 롤백의 시점이 이미 DDL 실행 다음 시점으로 잡힘.
+
+--------------------------------------------------------------------
+-- TCL : Transaction control language
+-- 1) COMMIT
+
+-- 2) ROLLBACK
+
+-- 3. SAVEPOINT
+--- 1. new_member 테이블에 1행 추가
+COMMIT;
+INSERT INTO new_member(MEMBER_ID, MEMBER_NAME)
+VALUES ('M01', '홍길동')
+;
+-- 1행 추가 상태까지 중간 저장
+SAVEPOINT do_insert; -- Savepoint이(가) 생성되었습니다.
+
+--- 2. '홍길동' 데이터의 주소를 수정
+UPDATE new_member m
+   SET m.ADDRESS = '율도국'
+ WHERE m.MEMBER_ID = 'M01'
+;
+-- 1 행 이(가) 업데이트되었습니다.
+
+-- 수정 상태까지 중간 저장
+SAVEPOINT do_update_addr; -- Savepoint이(가) 생성되었습니다.
+
+--- 3. '홍길동' 데이터의 전화번호를 수정
+UPDATE new_member m
+   SET m.PHONE = '0001'
+ WHERE m.MEMBER_ID = 'M01'
+;
+-- 1 행 이(가) 업데이트되었습니다.
+
+-- 전화번호 수정 상태까지 중간 저장
+SAVEPOINT do_update_phone; -- Savepoint이(가) 생성되었습니다.
+
+--- 4. '홍길동' 데이터의 성별을 수정
+UPDATE new_member m
+   SET m.GENDER = 'M'
+ WHERE m.MEMBER_ID = 'M01'
+;
+-- 1 행 이(가) 업데이트되었습니다.
+
+SAVEPOINT do_update_gender;
+
+-----------------------------------------------------------
+-- 홍길동 데이터의 ROLLBACK 시나리오
+
+-- 1. 주소 수정까지는 맞는데, 전화번호, 성별 수정은 잘못됨
+--  : 되돌아가야 할 SAVEPOINT = do_update_addr
+ROLLBACK TO do_update_addr;
+
+-- 2. 주소, 전화번호까지 수정이 맞고, 성별 수정이 잘못됨
+ROLLBACK TO do_update_phone;
+/*
+  오류 코드 : ORA-01086: savepoint 'DO_UPDATE_PHONE' never established in this session or is invalid
+  SAVEPOINT 의 순서가 do_update_addr이 앞서기 때분에 여기까지 한번에 ROLLBACK 이
+  일러나면 그 후에 생성된 SAVEPOINT는 삭제 됨.
+  
+  앞의 수정구문 재 실행 후 다시 성별 수정 전으로 돌아감
+*/
+ROLLBACK TO do_update_phone;
+
+-- 3. 2번 수행후 어디까지 롤백이 가능한가 
+ROLLBACK TO do_update_addr;
+ROLLBACK TO do_insert;
+ROLLBACK;
+-- SAVEPOINT 로 한번 되돌아 가면 되돌아간 시점 이후
+-- 생성된 SAVEPOINT 는 무효화 됨
+
+---------------------------------------------------------------------------------
+-- SEQUENCE : 기본 키 등으로 사용되는 일련번호 생성 객체
+
+-- 1. 시작번호 : 1, 최대 : 30, 사이클이 없는 시퀀스 생성
+CREATE SEQUENCE seq_member_id
+START WITH 1
+MAXVALUE 30
+NOCYCLE
+;
+
+DROP SEQUENCE "seq_member_id";
+-- Sequence SEQ_MEMBER_ID이(가) 생성되었습니다.
+
+-- 시퀀스가 생성되면 유저 딕셔너리에 정보가 저장됨
+--  : user_sequences
+
+SELECT s.SEQUENCE_NAME
+     , s.MIN_VALUE
+     , s.MAX_VALUE
+     , s.CYCLE_FLAG
+     , s.INCREMENT_BY
+  FROM user_sequences s
+ WHERE s.SEQUENCE_NAME = 'SEQ_MEMBER_ID'
+;
+-- SEQUENCE_NAME, MIN_VALUE, MAX_VALUE, CYCLE_FLAG, INCREMENT_BY
+-- SEQ_MEMBER_ID	1	        30	        N	        1
+
+CREATE SEQUENCE new_member
+START WITH 1
+MAXVALUE 30
+NOCYCLE
+;
+
+/*
+  오류 보고 -
+  ORA-00955: name is already used by an existing object
+*/
+
+-- 사용자의 객체가 저장되는 딕셔너리 테이블
+-- : user_objects
+SELECT o.OBJECT_NAME
+     , o.OBJECT_TYPE
+     , o.OBJECT_ID
+  FROM user_objects o
+;
+
+/* -------------------------------
+   메타 데이터를 저장하는 유저 딕셔너리
+   -------------------------------
+   무결성 제약조건 : user_constraints
+   시퀸스 생성정보 : user_sequences
+   테이블 생성정보 : user_tables
+   인덱스 생성정보 : user_indexes
+   객체들 생성정보 : user_objects
+   ------------------------------- */
+
+-- 2. 생성된 시퀀스 사용
+---- (1) NEXTVAL : 시퀀스의 다음 번호를 생성
+--                 CREATE 되고 나서 반드시 최초에 한번은
+--                 NEXTVAL 호출되어야 생성 시작됨
+
+--         사용법 : 시퀸스이름.NEXTVAL
+SELECT SEQ_MEMBER_ID.NEXTVAL
+  FROM dual;
+-- MAXVALUE 이상 생성하면
+-- ORA-08004: sequence SEQ_MEMBER_ID.NEXTVAL exceeds MAXVALUE and cannot be instantiated
+
+---- (2) CURRVAL : 시퀀스에서 현재 생성된 번호 확인
+--                 시퀀스 생성 후 NEXTVAL 한번도 호출된 적 없으면 비활성화 상태
+
+--         사용법 : 시퀀스이름.CURRVAL
+SELECT SEQ_MEMBER_ID.CURRVAL
+  FROM dual
+; 
+
+/*
+ORA-08002: sequence SEQ_TEST.CURRVAL is not yet defined in this session
+*/
+
+-- 3. 시퀸스 수정 : ALTER SEQUENCE
+--                생성한 시퀸스 seq_member_id 의 MAXVALUE 옵션을 NOMAXBALUE로
+ALTER SEQUENCE seq_member_id
+NOMAXVALUE
+;
+---Sequence SEQ_MEMBER_ID이(가) 변경되었습니다.
+
+-- 4. 시퀸스 삭제 : DROP SEQUENCE
+--                 생성한 시퀸스 seq_member_id 삭제
+DROP SEQUENCE seq_member_id
+;
+-- Sequence SEQ_MEMBER_ID이(가) 삭제되었습니다.
+
+-- 존재하지 않는 시퀸스에서 CURRVAL 시도
+SELECT SEQ_MEMBER_ID.CURRVAL
+  FROM dual
+; 
+-- ORA-02289: sequence does not exist
+
+-- 멤버 아이디에 조합할 시퀸스 신규 생성
+CREATE SEQUENCE seq_member_id
+START WITH 1
+NOMAXVALUE 
+NOCYCLE
+;
+
+-- 일괄적으로 증가하는 값으로 멤버아이디로 자동생성
+-- 'MO1', 'MO2', ... 'M0x' 이런 형태의 값을 조합
+SELECT 'M' || LPAD(seq_member_id.NEXTVAL, 2, 0) as member_id
+  FROM dual;
+
+---------------------------------------------------------------------------
 
 
 
