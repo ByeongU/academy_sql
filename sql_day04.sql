@@ -384,7 +384,7 @@ SELECT a."입사월" || '월' as "입사월"
 
 ------------ 8. DDL
 -- DDL
---  생성 : CREATR
+--  생성 : CREATE
 --  수정 : ALTER
 --  삭제 : DROP
 
@@ -522,7 +522,7 @@ CREATE TABLE member
  , birth_month  NUMBER(2)
  , gender       VARCHAR2(1)
  , CONSTRAINT pk_member        PRIMARY KEY (member_id)
- , CONSTARINT ck_member_gender CHECK (gender IN ('M', 'F'))
+ , CONSTRAINT ck_member_gender CHECK (gender IN ('M', 'F'))
 );
 
 -- 테이블 생성 기법중 이미 존재하는 테이블로부터 복사 생성
