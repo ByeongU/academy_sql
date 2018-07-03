@@ -362,7 +362,6 @@ SELECT TO_NUMBER(TO_CHAR(e.HIREDATE, 'FMMM')) "입사월"
  ORDER BY "입사월"
 ;
 
--- 
 SELECT TO_NUMBER(TO_CHAR(e.HIREDATE, 'FMMM')) || '월' "입사월"
      , COUNT(*) "인원(명)"
   FROM emp e
